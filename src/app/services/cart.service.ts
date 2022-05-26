@@ -1,4 +1,5 @@
 import { isNgTemplate } from '@angular/compiler';
+import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { CartItem } from '../common/cart-item';
@@ -62,4 +63,24 @@ export class CartService {
     console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQuantity: ${totalQuantityValue}`)
     console.log('---------------')
   }
+
+  decrementQuantity(theCartItem: CartItem) {
+    theCartItem.quantity--;
+    if(theCartItem.quantity === 0) {
+      this.remove(theCartItem);
+    } else {
+      this.computeCartTotals();
+    }
+  }
+  remove(theCartItem: CartItem) {
+    const itemIndex = this.cartItems.findIndex(item => item.id === theCartItem.id);
+    if(itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+      this.computeCartTotals();
+    } else {
+      this.computeCartTotals();
+    }
+  }
+
+
 }
