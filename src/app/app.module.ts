@@ -18,6 +18,7 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Luv2ShopFormService } from './services/luv2-shop-form.service';
+import { CheckoutService } from './services/checkout.service';
 
 const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
@@ -49,7 +50,7 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [ProductService, CartService, Luv2ShopFormService],
+  providers: [ProductService, CartService, Luv2ShopFormService, CheckoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
