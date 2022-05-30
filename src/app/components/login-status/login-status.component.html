@@ -5,4 +5,5 @@
   <button *ngIf="!isAuthenticated" class="security-btn" routerLink="/login">Login</button>
   <button *ngIf="isAuthenticated" class="security-btn" (click)="logout()">Logout</button>
   <button *ngIf="isAuthenticated" routerLink="/members" class="security-btn ml-3">Member</button>
+  <button *ngIf="isAuthenticated" routerLink="/order-history" class="security-btn ml-1">Orders</button>
 </div>
